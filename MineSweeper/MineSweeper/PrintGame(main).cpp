@@ -1,8 +1,7 @@
 #include <iostream>
 #include <time.h>
 
-#include "InitPrintMineField.h"
-#include "GenerateMinesInField.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -17,9 +16,7 @@ int main(){
 
 	char** MineField = new char*[ROWS];
 
-	InitMineField(MineField, ROWS, COLS);
-	GenerateMines(MineField, ROWS, COLS, COUNTMINES);
-	PrintMineField(MineField, ROWS, COLS);
+	StartGame(MineField, ROWS, COLS, COUNTMINES);
 
 
 	delete[] MineField;
