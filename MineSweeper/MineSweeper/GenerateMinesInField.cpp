@@ -13,7 +13,7 @@ bool PerevirkaNaPusteCell(char** MineField, const int x, const int y) {
 	return true;
 }
 
-void InitMines(char** MineField, const int ROWS, const int COLS, const int COUNTMINES) {
+void GenerateMines(char** MineField, const int ROWS, const int COLS, const int COUNTMINES) {
 	int x, y;
 	for (int i = 0; i < COUNTMINES; i++) {
 			x = rand() % (ROWS - 2) + 1;

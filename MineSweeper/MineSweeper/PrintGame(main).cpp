@@ -2,7 +2,7 @@
 #include <time.h>
 
 #include "InitPrintMineField.h"
-#include "InitMinesInField.h"
+#include "GenerateMinesInField.h"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ int main(){
 	char** MineField = new char*[ROWS];
 
 	InitMineField(MineField, ROWS, COLS);
-	InitMines(MineField, ROWS, COLS, COUNTMINES);
+	GenerateMines(MineField, ROWS, COLS, COUNTMINES);
 	PrintMineField(MineField, ROWS, COLS);
 
 
