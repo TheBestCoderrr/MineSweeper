@@ -131,12 +131,16 @@
     <ClCompile Include="InitPrintMineField.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PrintGame(main).cpp" />
+    <ClCompile Include="InstrumentFlag.cpp" />
+    <ClCompile Include="WinOrLose.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CinPlayer.h" />
     <ClInclude Include="GenerateMinesInField.h" />
     <ClInclude Include="InitPrintMineField.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="InstrumentFlag.h" />
+    <ClInclude Include="WinOrLose.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,7 +30,7 @@ void StartGame(char** MineField, const int ROWS, const int COLS, const int COUNT
 			cin >> ColPlayer;
 
 			if (PlayerInstruments % 2 == 0) {
-				//Flag
+				
 			}
 			else {
 				//Lopata
