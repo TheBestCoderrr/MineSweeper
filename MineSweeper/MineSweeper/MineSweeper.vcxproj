@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InitPrintMineField.cpp" />
     <ClCompile Include="PrintGame(main).cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InitPrintMineField.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
