@@ -130,8 +130,10 @@
     <ClCompile Include="GenerateMinesInField.cpp" />
     <ClCompile Include="InitPrintMineField.cpp" />
     <ClCompile Include="PrintGame(main).cpp" />
+    <ClCompile Include="CinPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CinPlayer.h" />
     <ClInclude Include="GenerateMinesInField.h" />
     <ClInclude Include="InitPrintMineField.h" />
   </ItemGroup>
