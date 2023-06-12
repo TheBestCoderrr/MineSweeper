@@ -2,74 +2,141 @@
 
 
 #include "InitPrintMineField.h"
-#include "GenerateMinesInField.h"
+#include "GenerateMinesAndNumsInField.h"
 #include "InstrumentFlag.h"
+#include "InstrumentShovel.h"
+#include "WinOrLose.h"
 
 using namespace std;
 
 
 
-void StartGame(char** MineField, const int ROWS, const int COLS, const int COUNTMINES) {
-	int FlagInField = 1;
-	int PlayerRow, PlayerCol;
-	int PlayerInstruments = 1;
-	int CountDestroyMines = 0;
-	char PreviousSymbol = NULL;
+void StartGame(char** MineField,char** PlayerField, const int ROWS, const int COLS, const int COUNTMINES,int FlagInField,int PlayerRow,int PlayerCol,
+	int PlayerInstruments, int CountDestroyMines,char PreviousSymbol, char PatternNum[]) {
+	
+	FlagInField = 0;
+	PlayerInstruments = 1;
+	CountDestroyMines = 0;
+	PreviousSymbol = NULL;
 
-	InitMineField(MineField, ROWS, COLS);
+	InitField(PlayerField, ROWS, COLS);
+	InitField(MineField, ROWS, COLS);
 	GenerateMines(MineField, ROWS, COLS, COUNTMINES);
-	PrintMineField(MineField, ROWS, COLS);
+	GenerateNums(MineField, ROWS, COLS);
+	PrintField(MineField, ROWS, COLS);
+
 
 	while (true) {
-		cout << "Enter your choice: ";
+		cout << "Game/Enter your choice: ";
 		cin >> PlayerRow;
 		if (PlayerRow == 0) {
 			cout << "Game Over!" << endl;
 			break;
 		}
 		else if (PlayerRow == -1) {
-			cout << "Instrument" << endl;
 			PlayerInstruments++;
+			if(PlayerInstruments % 2 == 0)
+				cout << "Switch to Flag!" << endl;
+			else
+				cout << "Switch to Shovel!" << endl;
 		}
 		else if (PlayerRow >= 1 && PlayerRow <= ROWS - 1) {
 
 			cin >> PlayerCol;
 
-			if (MineField[PlayerRow][PlayerCol] == 'F') {
-				DeleteFlag(MineField, PlayerRow, PlayerCol, PreviousSymbol);
+			if (PlayerField[PlayerRow][PlayerCol] == 'F') {
+				DeleteFlag(PlayerField, PlayerRow, PlayerCol, PreviousSymbol);
 				FlagInField--;
-				PrintMineField(MineField, ROWS, COLS);
+				PrintField(PlayerField, ROWS, COLS);
+				cout << "Count Flags: " << COUNTMINES - FlagInField << endl;
 				continue;
 			}
 
-
-			if (PlayerInstruments % 2 == 0 && FlagInField <= COUNTMINES) {
+			//Flag
+			if (PlayerInstruments % 2 == 0 && FlagInField < COUNTMINES) {
 				if (IfDestroyMine(MineField, PlayerRow, PlayerCol))
 					CountDestroyMines++;
-				PreviousSymbol = MineField[PlayerRow][PlayerCol];
-				SetFlag(MineField, PlayerRow, PlayerCol);
+				PreviousSymbol = PlayerField[PlayerRow][PlayerCol];
+				SetFlag(PlayerField, PlayerRow, PlayerCol);
 				FlagInField++;
-				PrintMineField(MineField, ROWS, COLS);
+				PrintField(PlayerField, ROWS, COLS);
+				cout << "Count Flags: " << COUNTMINES - FlagInField << endl;
 			}
-			else if (FlagInField > COUNTMINES)
+			else if (FlagInField >= COUNTMINES)
 				cout << "No Flags!" << endl;
+			//Lopata
 			else {
-
-
-				PrintMineField(MineField, ROWS, COLS);
-			}
-			
+				if (MineField[PlayerRow][PlayerCol] == '*') {
+					cout << "Game Over! You Lose..." << endl;
+					MineField[PlayerRow][PlayerCol] = 'X';
+					PrintField(MineField, ROWS, COLS);
+					break;
+				}
+				else if (IfCellisNum(MineField, PlayerRow, PlayerCol, PatternNum))
+					DigCell(MineField, PlayerField, PlayerRow, PlayerCol);
+				
+					
+				PrintField(PlayerField, ROWS, COLS);
+			}	
 		}
 		else {
 			cout << "Invalid choice!" << endl;
 			continue;
 		} 
 
-		
+		if (WinOrLose(CountDestroyMines)) {
+			cout << "Game Over! You Win..." << endl;
+			break;
+		}
 	}
 }
 
-void Menu(int PlayerChoice) {
+void Rules() {
+	cout << "Rules..." << endl;
+}
 
+void Signs() {
+	cout << "Signs: " << endl;
+}
 
+void Developers() {
+	cout << "Developers..." << endl;
+}
+
+void Menu(int PlayerChoice, char** MineField, char** PlayerField, const int ROWS, const int COLS, const int COUNTMINES, int FlagInField, 
+	int PlayerRow, int PlayerCol, int PlayerInstruments, int CountDestroyMines, char PreviousSymbol, char PatternNum[]) {
+
+	cout << "Menu:\n0 - Exit;\n1 - Start Game;\n2 - Rules\n3 - Signs;\n4 - Developers;\n" << endl;
+
+	while (true) {
+
+		cout << "Menu/Enter your choice: ";
+		cin >> PlayerChoice;
+
+		switch (PlayerChoice) {
+			case 0:
+				cout << "GoodBye!" << endl;
+				break;
+			case 1:
+				StartGame(MineField, PlayerField, ROWS, COLS, COUNTMINES, FlagInField, PlayerRow, PlayerCol, PlayerInstruments, CountDestroyMines,
+					PreviousSymbol, PatternNum);
+				cout << "New Game?" << endl;
+				break;
+			case 2:
+				Rules();
+				break;
+			case 3:
+				Signs();
+				break;
+			case 4:
+				Developers();
+				break;
+			default:
+				cout << "Invalid choice!" << endl;
+				break;
+		}
+
+		if (PlayerChoice == 0)
+			break;
+	}
 }

@@ -21,7 +21,7 @@
     <ClCompile Include="InitPrintMineField.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="GenerateMinesInField.cpp">
+    <ClCompile Include="GenerateMinesAndNumsInField.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
@@ -33,12 +33,15 @@
     <ClCompile Include="WinOrLose.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="InstrumentShovel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InitPrintMineField.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="GenerateMinesInField.h">
+    <ClInclude Include="GenerateMinesAndNumsInField.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="WinOrLose.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentShovel.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

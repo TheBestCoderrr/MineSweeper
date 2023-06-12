@@ -1,5 +1,5 @@
 #pragma once
 
-void InitMineField(char** MineField, const int ROWS, const int COLS);
+void InitField(char** MineField, const int ROWS, const int COLS);
 
-void PrintMineField(char** MineField, const int ROWS, const int COLS);
+void PrintField(char** MineField, const int ROWS, const int COLS);

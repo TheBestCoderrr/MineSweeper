@@ -127,16 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GenerateMinesInField.cpp" />
+    <ClCompile Include="GenerateMinesAndNumsInField.cpp" />
     <ClCompile Include="InitPrintMineField.cpp" />
+    <ClCompile Include="InstrumentShovel.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PrintGame(main).cpp" />
     <ClCompile Include="InstrumentFlag.cpp" />
     <ClCompile Include="WinOrLose.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GenerateMinesInField.h" />
+    <ClInclude Include="GenerateMinesAndNumsInField.h" />
     <ClInclude Include="InitPrintMineField.h" />
+    <ClInclude Include="InstrumentShovel.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="InstrumentFlag.h" />
     <ClInclude Include="WinOrLose.h" />

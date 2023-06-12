@@ -1,1 +1,1 @@
-#pragma once
+bool WinOrLose(int CountDestroyMines);
