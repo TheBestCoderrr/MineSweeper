@@ -30,22 +30,28 @@ void StartGame(char** MineField,char** PlayerField, int FlagInField,int PlayerRo
 
 		switch (Complexity) {
 			case 1:
-				ROWS = 8;
-				COLS = 10;
+				ROWS = 10;
+				COLS = 12;
 				COUNTMINES = 10;
 				Break = false;
+				MineField = new char* [ROWS];
+				PlayerField = new char* [ROWS];
 				break;
 			case 2:
-				ROWS = 14;
-				COLS = 18;
+				ROWS = 16;
+				COLS = 20;
 				COUNTMINES = 40;
 				Break = false;
+				MineField = new char* [ROWS];
+				PlayerField = new char* [ROWS];
 				break;
 			case 3:
-				ROWS = 24;
-				COLS = 20;
+				ROWS = 26;
+				COLS = 22;
 				COUNTMINES = 99;
 				Break = false;
+				MineField = new char* [ROWS];
+				PlayerField = new char* [ROWS];
 				break;
 			default:
 				cout << "Invalid complexity!" << endl;
@@ -58,8 +64,7 @@ void StartGame(char** MineField,char** PlayerField, int FlagInField,int PlayerRo
 	InitField(MineField, ROWS, COLS);
 	GenerateMines(MineField, ROWS, COLS, COUNTMINES);
 	GenerateNums(MineField, ROWS, COLS);
-	PrintField(MineField, ROWS, COLS);
-
+	PrintField(PlayerField, ROWS, COLS);
 
 	while (true) {
 		cout << "Game/Enter your choice: ";
