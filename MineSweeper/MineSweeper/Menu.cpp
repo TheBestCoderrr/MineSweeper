@@ -136,7 +136,7 @@ void Rules() {
 }
 
 void Signs() {
-	cout << "Signs: " << endl;
+	cout << "Signs:\n. - cell\nF - flag\n* - mine\nX - boom(you have hit a mine)" << endl;
 }
 
 void Developers() {
