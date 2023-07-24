@@ -11,13 +11,48 @@ using namespace std;
 
 
 
-void StartGame(char** MineField,char** PlayerField, const int ROWS, const int COLS, const int COUNTMINES,int FlagInField,int PlayerRow,int PlayerCol,
+void StartGame(char** MineField,char** PlayerField, int FlagInField,int PlayerRow,int PlayerCol,
 	int PlayerInstruments, int CountDestroyMines,char PreviousSymbol, char PatternNum[]) {
 	
 	FlagInField = 0;
 	PlayerInstruments = 1;
 	CountDestroyMines = 0;
 	PreviousSymbol = NULL;
+
+	int ROWS, COLS, COUNTMINES;
+
+	unsigned short int Complexity;
+	bool Break = true;
+	cout << "Complexity:\n1 - eazy\n2 - middle\n3 - hard" << endl;
+	while (Break) {
+		cout << "Enter Complexity:";
+		cin >> Complexity;
+
+		switch (Complexity) {
+			case 1:
+				ROWS = 8;
+				COLS = 10;
+				COUNTMINES = 10;
+				Break = false;
+				break;
+			case 2:
+				ROWS = 14;
+				COLS = 18;
+				COUNTMINES = 40;
+				Break = false;
+				break;
+			case 3:
+				ROWS = 24;
+				COLS = 20;
+				COUNTMINES = 99;
+				Break = false;
+				break;
+			default:
+				cout << "Invalid complexity!" << endl;
+				break;
+		}
+
+	}
 
 	InitField(PlayerField, ROWS, COLS);
 	InitField(MineField, ROWS, COLS);
@@ -103,8 +138,8 @@ void Developers() {
 	cout << "Developers..." << endl;
 }
 
-void Menu(int PlayerChoice, char** MineField, char** PlayerField, const int ROWS, const int COLS, const int COUNTMINES, int FlagInField, 
-	int PlayerRow, int PlayerCol, int PlayerInstruments, int CountDestroyMines, char PreviousSymbol, char PatternNum[]) {
+void Menu(int PlayerChoice, char** MineField, char** PlayerField, int FlagInField, int PlayerRow, int PlayerCol, int PlayerInstruments, 
+	int CountDestroyMines, char PreviousSymbol, char PatternNum[]) {
 
 	cout << "Menu:\n0 - Exit;\n1 - Start Game;\n2 - Rules\n3 - Signs;\n4 - Developers;\n" << endl;
 
@@ -118,7 +153,7 @@ void Menu(int PlayerChoice, char** MineField, char** PlayerField, const int ROWS
 				cout << "GoodBye!" << endl;
 				break;
 			case 1:
-				StartGame(MineField, PlayerField, ROWS, COLS, COUNTMINES, FlagInField, PlayerRow, PlayerCol, PlayerInstruments, CountDestroyMines,
+				StartGame(MineField, PlayerField, FlagInField, PlayerRow, PlayerCol, PlayerInstruments, CountDestroyMines,
 					PreviousSymbol, PatternNum);
 				cout << "New Game?" << endl;
 				break;

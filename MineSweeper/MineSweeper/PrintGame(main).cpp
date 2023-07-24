@@ -5,17 +5,13 @@
 
 using namespace std;
 
-#define ROWS 10
-#define COLS 12
-#define COUNTMINES 10
-
 int main(){
 	srand(time(NULL));
 
 	cout << "\tMineSweeper" << endl;
 
-	char** MineField = new char*[ROWS];
-	char** PlayerField = new char*[ROWS];
+	char** MineField = NULL;
+	char** PlayerField = NULL;
 
 	int FlagInField = NULL;
 	int PlayerRow = NULL, PlayerCol = NULL;
@@ -27,7 +23,7 @@ int main(){
 
 	int PlayerChoice = NULL;
 
-	Menu(PlayerChoice, MineField, PlayerField, ROWS, COLS, COUNTMINES, FlagInField, PlayerRow, PlayerCol, PlayerInstruments, CountDestroyMines, 
+	Menu(PlayerChoice, MineField, PlayerField, FlagInField, PlayerRow, PlayerCol, PlayerInstruments, CountDestroyMines, 
 		PreviousSymbol, PatternNum);
 
 
